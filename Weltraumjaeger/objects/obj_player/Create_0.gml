@@ -7,19 +7,13 @@ image_angle -= 90;
 
 // Acceleration
 acc = 5;
-xacc = 0;
-yacc = 0;
 
 // Velocity
-terminalVel = 15;
-xTerminalVel = terminalVel * dcos(image_angle);
-yTerminalVel = terminalVel * dsin(image_angle);
-xvel = 0;
-yvel = -15;
+terminalVel = 25;
 
 // Rotation
-rotSpeed = 0.5;
+rotSpeed = 2;
 
-// Plane forces
-//drag = ;
+// Ship forces
+friction = 0.05;
 //grav = ;
