@@ -4,9 +4,9 @@ function scr_player_input(){
 	if(array_length(global.gamepads)>0){
 		thrusters = gamepad_button_value(global.gamepads[0], gp_shoulderlb);
 		turning = -gamepad_axis_value(global.gamepads[0], gp_axislh);
-		attack=0;
-		attackPressed=0;
-		attackReleased=0;
+		attack= gamepad_button_check(global.gamepads[0], gp_face3);
+		attackPressed= gamepad_button_check_pressed(global.gamepads[0], gp_face3);
+		attackReleased= gamepad_button_check_released(global.gamepads[0], gp_face3);
 		return([thrusters, turning, attack, attackPressed, attackReleased]);
 	};
 	
@@ -16,4 +16,21 @@ function scr_player_input(){
 	attackPressed = keyboard_check_pressed(vk_space);
 	attackReleased = keyboard_check_released(vk_space);
 	return([thrusters, turning, attack, attackPressed, attackReleased]);
+}
+
+function scr_bullet_spawner(weapon, xpos, ypos, timer){
+	switch(weapon){
+		case "Minigun":
+			if(!timer){
+				var _bullet = instance_create_layer(xpos + random_range(-2, 2), ypos + random_range(-2, 2), "Instances", obj_bullet);
+				var angleRandomizer = random_range(-5,5);
+				_bullet.direction = self.image_angle+angleRandomizer;
+				_bullet.image_angle = self.image_angle+angleRandomizer;
+				_bullet.speed = 35;
+				timer = room_speed/10;
+			};
+		break;
+	};
+	
+	return(timer);			
 }

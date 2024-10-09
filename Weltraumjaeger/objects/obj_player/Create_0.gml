@@ -3,7 +3,7 @@
 
 
 playerInput = [0,0,0,0,0];
-image_angle -= 90;
+image_angle += 90;
 
 // Acceleration
 acc = 5;
@@ -16,4 +16,7 @@ rotSpeed = 2;
 
 // Ship forces
 friction = 0.05;
-//grav = ;
+
+// Shooting
+weapon = "Minigun";
+alarm[0] = 0;
